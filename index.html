@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silver Leaf Productions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --silver: #9eadb8;
+      --silver-light: #d4dde3;
+      --silver-dark: #5c7280;
+      --green:  #6a8f6e;
+      --green-light: #a8c5ac;
+      --text:   #1a1a1a;
+      --muted:  #666;
+      --bg:     #f8f8f6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(248,248,246,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-size: 1rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--silver-dark);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 0.9rem; letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      background: linear-gradient(160deg, #eef2f0 0%, #e8eef2 50%, #f0ede8 100%);
+    }
+    .leaf-mark {
+      width: 64px; height: 64px; margin-bottom: 28px;
+      opacity: 0.75;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 300; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--silver-dark);
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 460px; line-height: 1.8;
+    }
+
+    /* ── APPS ── */
+    .section {
+      padding: 100px 24px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.75rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--silver);
+      margin-bottom: 48px;
+    }
+    .app-card {
+      display: flex; gap: 48px; align-items: center;
+      background: #fff;
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+    }
+    .app-icon {
+      width: 110px; height: 110px;
+      border-radius: 24px;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .app-icon-placeholder {
+      width: 110px; height: 110px;
+      border-radius: 24px; flex-shrink: 0;
+      background: linear-gradient(135deg, #87cef8 0%, #d4a8e0 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .app-info h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 8px; }
+    .app-info .tagline {
+      font-size: 0.95rem; color: var(--muted); margin-bottom: 20px; line-height: 1.7;
+    }
+    .app-store-btn {
+      display: inline-block;
+      background: var(--text); color: #fff;
+      text-decoration: none; font-size: 0.85rem;
+      letter-spacing: 0.04em; font-weight: 500;
+      padding: 10px 22px; border-radius: 30px;
+      transition: background 0.2s;
+    }
+    .app-store-btn:hover { background: #333; }
+    .badge-coming {
+      display: inline-block;
+      border: 1px solid var(--silver-light);
+      color: var(--silver-dark); font-size: 0.8rem;
+      padding: 8px 18px; border-radius: 30px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none; border-top: 1px solid #e8e8e4;
+      max-width: 900px; margin: 0 auto;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      padding: 80px 24px 120px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .contact h3 { font-size: 1.3rem; font-weight: 500; margin-bottom: 12px; }
+    .contact p { color: var(--muted); font-size: 0.95rem; }
+    .contact a { color: var(--silver-dark); text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e8e8e4;
+      padding: 32px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: #aaa;
+    }
+    footer a { color: #aaa; text-decoration: none; }
+    footer a:hover { color: var(--muted); }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 24px; }
+      .app-card { flex-direction: column; gap: 28px; padding: 32px 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">Silver Leaf</a>
+    <ul class="nav-links">
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="leaf-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M32 8 C18 8, 8 20, 8 36 C8 50, 20 58, 32 58 C32 58, 32 42, 20 32 C32 32, 48 28, 56 16 C50 10, 42 8, 32 8 Z"
+            fill="#9eadb8" opacity="0.7"/>
+      <line x1="32" y1="58" x2="32" y2="38" stroke="#9eadb8" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+    <h1>Silver Leaf Productions</h1>
+    <p>Independent software studio crafting thoughtful apps for iOS.</p>
+  </section>
+
+  <!-- APPS -->
+  <section class="section" id="apps">
+    <p class="section-label">Apps</p>
+    <div class="app-card">
+      <div class="app-icon-placeholder">🎈</div>
+      <div class="app-info">
+        <h2>Float</h2>
+        <p class="tagline">
+          Jettison the noise, lighten the load, and float into focus.
+          A beautiful focus timer that rewards deep work with a sky full of hot air balloons.
+        </p>
+        <span class="badge-coming">Coming Soon to the App Store</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <p class="section-label">Contact</p>
+    <h3>Get in touch</h3>
+    <p>
+      Questions, feedback, or support enquiries:<br />
+      <a href="mailto:sam.worthington.fisher@gmail.com">sam.worthington.fisher@gmail.com</a>
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Silver Leaf Productions</span>
+    <span><a href="https://samscad66.github.io/Float/privacy-policy.html">Privacy Policy</a></span>
+  </footer>
+
+</body>
+</html>
