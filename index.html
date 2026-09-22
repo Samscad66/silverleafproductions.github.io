@@ -52,15 +52,11 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
+      background: url('Silver Leaf Logo.png') center center / cover no-repeat;
       display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
+      justify-content: flex-end; align-items: center;
       text-align: center;
-      padding: 120px 24px 80px;
-      background: linear-gradient(160deg, #eef2f0 0%, #e8eef2 50%, #f0ede8 100%);
-    }
-    .leaf-mark {
-      width: 120px; height: 120px; margin-bottom: 28px;
-      object-fit: contain;
+      padding: 0 24px 80px;
     }
     .hero h1 {
       font-size: clamp(2.2rem, 6vw, 3.8rem);
@@ -171,7 +167,6 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img src="Silver Leaf Logo.png" class="leaf-mark" alt="Silver Leaf Productions" />
     <h1>Silver Leaf Productions</h1>
     <p>Independent software studio crafting thoughtful apps for iOS.</p>
   </section>
