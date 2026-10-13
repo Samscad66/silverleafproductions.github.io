@@ -4,234 +4,217 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Silver Leaf Productions</title>
-  <link rel="icon" type="image/svg+xml" href="Silver Leaf  - Black and White.svg" />
+  <meta name="description" content="Silver Leaf Productions is an independent app studio in Nova Scotia, Canada, making Float, Scare Scape and Study Cat." />
+  <meta property="og:title" content="Silver Leaf Productions" />
+  <meta property="og:description" content="Playful, thoughtful apps from an independent studio in Nova Scotia, Canada." />
+  <meta property="og:image" content="https://silverleafproductions.com/assets/hero-logo.jpg" />
+  <link rel="icon" type="image/svg+xml" href="Silver%20Leaf%20%20-%20Black%20and%20White.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=Fredoka:wght@600&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --silver: #9eadb8;
-      --silver-light: #d4dde3;
-      --silver-dark: #5c7280;
-      --green:  #6a8f6e;
-      --green-light: #a8c5ac;
-      --text:   #1a1a1a;
-      --muted:  #666;
-      --bg:     #3c4048;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'DM Sans', system-ui, -apple-system, sans-serif; color: #f2f4f7; background: #0f1117; line-height: 1.55; }
+    a { color: inherit; }
+    img { max-width: 100%; }
+    .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .disp { font-family: 'Bricolage Grotesque', system-ui, sans-serif; }
+    .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; align-items: center; }
+    .h2 { font-size: 72px; line-height: 1; letter-spacing: -2px; margin: 0; }
+    .pill { display: inline-block; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; padding: 8px 14px; border-radius: 999px; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 16px 26px; border-radius: 999px; font-size: 16px; }
+    .stack { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+    .sec { padding: 120px 0; }
+    .skip { position: absolute; left: -999px; top: 8px; background: #d6dee5; color: #0f1117; padding: 10px 16px; border-radius: 8px; z-index: 20; }
+    .skip:focus { left: 8px; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    /* NAV */
+    header { position: sticky; top: 0; z-index: 10; background: rgba(15, 17, 23, 0.86); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    nav .logo img { height: 44px; width: auto; display: block; }
+    .navlinks { display: flex; gap: 32px; align-items: center; }
+    .navlinks a { text-decoration: none; color: #c3cad3; font-size: 15px; }
+    .navlinks a:hover { color: #fff; }
+    .navlinks .cta { background: #d6dee5; color: #0f1117; font-weight: 700; font-size: 14px; padding: 12px 20px; border-radius: 999px; }
+    .navlinks .cta:hover { background: #fff; color: #0f1117; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 48px;
-      background: rgba(248,248,246,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-    .nav-logo {
-      font-size: 1rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--silver-dark);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--muted);
-      font-size: 0.9rem; letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
+    /* HERO: cinema screen */
+    .hero { position: relative; overflow: hidden; aspect-ratio: 1408 / 768; max-height: 88vh; width: 100%; background: #0f1117 url('assets/hero-logo.jpg') center / cover no-repeat; }
+    .screen { position: absolute; left: 8%; right: 8%; top: 3%; bottom: 19%; overflow: hidden; pointer-events: none;
+      -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 48%, #000 55%, transparent 100%);
+      mask-image: radial-gradient(ellipse 60% 60% at 50% 48%, #000 55%, transparent 100%); }
+    .flick { position: absolute; inset: 0; background: radial-gradient(ellipse 55% 55% at 50% 45%, rgba(255,176,90,.22), rgba(255,150,70,.08) 60%, transparent 80%); mix-blend-mode: screen; animation: flick .25s steps(1, end) infinite; }
+    @keyframes flick { 0% { opacity: .9 } 50% { opacity: .62 } 100% { opacity: .9 } }
+    .roll { position: absolute; left: 0; right: 0; height: 26%; top: -30%; background: linear-gradient(180deg, transparent, rgba(255,215,160,.04) 35%, rgba(255,215,160,.08) 50%, rgba(255,215,160,.04) 65%, transparent); mix-blend-mode: screen; animation: roll 8s linear infinite; }
+    @keyframes roll { 0% { top: -30% } 100% { top: 105% } }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      background: url('Silver Leaf Logo.png') center center / cover no-repeat;
-      display: flex; flex-direction: column;
-      justify-content: flex-end; align-items: center;
-      text-align: center;
-      padding: 0 24px 80px;
-    }
+    /* FLOAT */
+    .float-bg { position: relative; overflow: hidden; color: #1d2a44; background: linear-gradient(180deg, #9fd3ef 0%, #c9dcf3 45%, #f5cfc8 100%); }
+    .cloud { position: absolute; background: #fff; border-radius: 999px; filter: blur(18px); opacity: .7; }
+    .features { display: flex; flex-direction: column; gap: 14px; font-size: 17px; }
+    .features div { display: flex; gap: 14px; align-items: center; }
+    .features svg { flex-shrink: 0; }
+    .phones { position: relative; height: 640px; }
+    .ph { position: absolute; width: 280px; height: 609px; border: 10px solid #0c0f1e; border-radius: 46px; overflow: hidden; box-shadow: 0 40px 80px rgba(20,40,80,.35); background: #0c0f1e; }
+    .ph img, .ph video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ph1 { left: 40px; top: 20px; transform: rotate(-6deg); }
+    .ph2 { left: 250px; top: 0; transform: rotate(5deg); }
+    .bob { animation: bob 6s ease-in-out infinite; }
+    .bob2 { animation: bob 7s ease-in-out -2s infinite; }
+    @keyframes bob { 0%, 100% { translate: 0 0 } 50% { translate: 0 -14px } }
+    .applinks { font-size: 15px; display: flex; gap: 14px; }
 
-    /* ── APPS ── */
-    .section {
-      padding: 100px 24px;
-      max-width: 900px; margin: 0 auto;
-    }
-    .section-label {
-      font-size: 0.75rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--silver);
-      margin-bottom: 48px;
-    }
-    .app-card {
-      display: flex; gap: 48px; align-items: center;
-      background: #fff;
-      border-radius: 20px;
-      padding: 48px;
-      box-shadow: 0 2px 24px rgba(0,0,0,0.06);
-    }
-    .app-icon {
-      width: 110px; height: 110px;
-      border-radius: 24px;
-      object-fit: cover;
-      flex-shrink: 0;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    }
-    .app-icon-placeholder {
-      width: 110px; height: 110px;
-      border-radius: 24px; flex-shrink: 0;
-      background: linear-gradient(135deg, #87cef8 0%, #d4a8e0 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    }
-    .app-info h2 { font-size: 1.6rem; font-weight: 600; margin-bottom: 8px; }
-    .app-info .tagline {
-      font-size: 0.95rem; color: var(--muted); margin-bottom: 20px; line-height: 1.7;
-    }
-    .app-store-btn {
-      display: inline-block;
-      background: var(--text); color: #fff;
-      text-decoration: none; font-size: 0.85rem;
-      letter-spacing: 0.04em; font-weight: 500;
-      padding: 10px 22px; border-radius: 30px;
-      transition: background 0.2s;
-    }
-    .app-store-btn:hover { background: #333; }
-    .app-links { margin-top: 16px; font-size: 0.85rem; color: #aaa; }
-    .app-links a { color: var(--silver-dark); text-decoration: none; padding: 6px 0; display: inline-block; }
-    .app-links a:hover { text-decoration: underline; }
-    .app-links span { margin: 0 8px; }
-    .badge-coming {
-      display: inline-block;
-      border: 1px solid var(--silver-light);
-      color: var(--silver-dark); font-size: 0.8rem;
-      padding: 8px 18px; border-radius: 30px;
-      letter-spacing: 0.06em;
-    }
+    /* SCARE SCAPE */
+    .scare-bg { color: #ece6d6; background: radial-gradient(circle at 70% 45%, rgba(196,214,74,.18), transparent 45%), #11150f; }
+    .bat { width: 100%; max-width: 560px; aspect-ratio: 900 / 695; background: url('assets/bat-blink-sprite.png') 0% 0 / 300% 100% no-repeat; filter: drop-shadow(0 0 40px rgba(214,230,90,.22)); animation: blinkseq 9s step-end infinite; }
+    @keyframes blinkseq {
+      0% { background-position: 0% 0 } 40% { background-position: 50% 0 } 40.7% { background-position: 100% 0 } 41.8% { background-position: 50% 0 } 42.5% { background-position: 0% 0 }
+      85% { background-position: 50% 0 } 85.7% { background-position: 100% 0 } 86.8% { background-position: 50% 0 } 87.5% { background-position: 0% 0 }
+      89% { background-position: 50% 0 } 89.7% { background-position: 100% 0 } 90.8% { background-position: 50% 0 } 91.5% { background-position: 0% 0 } 100% { background-position: 0% 0 } }
 
-    /* ── DIVIDER ── */
-    .divider {
-      border: none; border-top: 1px solid #e8e8e4;
-      max-width: 900px; margin: 0 auto;
-    }
+    /* STUDY CAT */
+    .cat-bg { color: #2a2420; background: #cfeee7; }
+    .tick { animation: tick 3s ease-in-out infinite; transform-origin: 50% 90%; }
+    @keyframes tick { 0%, 100% { rotate: -2deg } 50% { rotate: 2deg } }
 
-    /* ── CONTACT ── */
-    .contact {
-      padding: 80px 24px 120px;
-      max-width: 900px; margin: 0 auto;
-    }
-    .contact h3 { font-size: 1.3rem; font-weight: 500; margin-bottom: 12px; }
-    .contact p { color: var(--muted); font-size: 0.95rem; }
-    .contact a { color: var(--silver-dark); text-decoration: none; }
-    .contact a:hover { text-decoration: underline; }
+    /* ABOUT + SIGNUP */
+    .studio { background: radial-gradient(ellipse 70% 60% at 70% 30%, rgba(214,222,229,.16), transparent 70%), radial-gradient(ellipse 50% 40% at 15% 90%, rgba(120,150,210,.12), transparent 70%), #0f1117; }
+    .card { background: #1a1d26; border: 1px solid rgba(255,255,255,.08); border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 18px; }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid #e8e8e4;
-      padding: 32px 48px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.8rem; color: #aaa;
-    }
-    footer a { color: #aaa; text-decoration: none; }
-    footer a:hover { color: var(--muted); }
+    footer { border-top: 1px solid rgba(255,255,255,.08); background: #0b0d12; }
+    .foot { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; padding-top: 36px; padding-bottom: 36px; font-size: 14px; color: #aab3be; }
+    .foot a { color: #c3cad3; }
+    .foot span { display: flex; gap: 18px; flex-wrap: wrap; }
 
-    @media (max-width: 640px) {
-      nav { padding: 16px 24px; }
-      .app-card { flex-direction: column; gap: 28px; padding: 32px 24px; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
+    @media (max-width: 900px) {
+      .wrap { padding: 0 20px; }
+      .two { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+      .h2 { font-size: 52px; }
+      .navlinks .tl { display: none; }
+      .sec { padding: 72px 0; }
+      .order-first { order: -1; }
+      .phones { height: 470px; max-width: 360px; margin: 0 auto; width: 100%; }
+      .ph { width: 200px; height: 435px; border-width: 8px; border-radius: 34px; }
+      .ph1 { left: 0; top: 20px; }
+      .ph2 { left: 150px; top: 0; }
+      .card { padding: 28px; border-radius: 24px; }
+      .foot { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .flick, .roll, .bob, .bob2, .bat, .tick { animation: none; }
+      .roll { display: none; }
     }
   </style>
 </head>
 <body>
+  <a class="skip" href="#apps">Skip to the apps</a>
 
-  <nav>
-    <a class="nav-logo" href="#">
-      <img src="Silver Leaf  - Black and White.svg" alt="Silver Leaf Productions" style="height: 32px; width: auto; display: block;" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="#apps">Apps</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-  </section>
-
-  <!-- APPS -->
-  <section class="section" id="apps">
-    <p class="section-label">Apps</p>
-
-    <div class="app-card">
-      <img src="float-icon.png" class="app-icon" alt="Float" />
-      <div class="app-info">
-        <h2>Float</h2>
-        <p class="tagline">
-          Jettison the noise, lighten the load, and float into focus.
-          A beautiful focus timer that rewards deep work with a sky full of hot air balloons.
-        </p>
-        <span class="badge-coming">Coming Soon to the App Store</span>
-        <p class="app-links">
-          <a href="float/support.html">Support</a>
-          <span aria-hidden="true">·</span>
-          <a href="float/privacy.html">Privacy Policy</a>
-          <span aria-hidden="true">·</span>
-          <a href="float/terms.html">Terms of Use</a>
-        </p>
+  <header>
+    <nav class="wrap" aria-label="Main">
+      <a class="logo" href="#top"><img src="assets/logo-white.png" alt="Silver Leaf Productions" /></a>
+      <div class="navlinks">
+        <a class="tl" href="#apps">Apps</a>
+        <a class="tl" href="#about">About</a>
+        <a class="cta" href="#signup">Get launch news</a>
       </div>
-    </div>
+    </nav>
+  </header>
 
-    <div class="app-card" style="margin-top: 32px;">
-      <img src="Bat Eye Icon.png" class="app-icon" alt="Scare Scape" />
-      <div class="app-info">
-        <h2>Scare Scape</h2>
-        <p class="tagline">
-          You've seen the movie, you've read the books — now visit Dimvale for real!
-          Scare Scape the app — coming soon!!!
-        </p>
-        <a href="https://www.scarescape.com/" target="_blank" class="app-store-btn">Visit scarescape.com</a>
+  <main>
+    <!-- HERO: cinema screen -->
+    <section id="top" class="hero" role="img" aria-label="Silver Leaf Productions logo on a cinema screen">
+      <div class="screen" aria-hidden="true"><div class="flick"></div><div class="roll"></div></div>
+    </section>
+
+    <!-- FLOAT -->
+    <section id="apps" class="float-bg sec">
+      <div class="cloud" aria-hidden="true" style="width: 340px; height: 90px; left: -60px; top: 80px"></div>
+      <div class="cloud" aria-hidden="true" style="width: 260px; height: 70px; right: 6%; bottom: 60px"></div>
+      <div class="wrap two" style="position: relative">
+        <div class="stack">
+          <div style="display: flex; align-items: center; gap: 16px">
+            <img src="assets/float-icon.jpg" alt="Float app icon" width="72" height="72" style="border-radius: 17px; box-shadow: 0 10px 24px rgba(29,42,68,.25)" />
+            <span class="pill" style="background: rgba(255,255,255,.6)">Study timer · Coming soon</span>
+          </div>
+          <h2 class="disp h2" style="font-weight: 800">Float</h2>
+          <p style="margin: 0; font-size: 24px; font-weight: 500; max-width: 480px">Jettison the noise, lighten the load and float into focus.</p>
+          <div class="features">
+            <div><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1d2a44" stroke-width="1.8" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6c0 3.5 3 6 6 7 3-1 6-3.5 6-7a6 6 0 0 0-6-6Z"/><path d="M10.5 16 11 19h2l.5-3"/><path d="M10.5 21h3"/></svg><span>Earn a balloon for every session you complete</span></div>
+            <div><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1d2a44" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>An override code keeps you from quitting early</span></div>
+            <div><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1d2a44" stroke-width="1.8" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg><span>Calm music or white/wind noise while you work</span></div>
+          </div>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 8px">
+            <span class="btn" style="background: #1d2a44; color: #fff; font-size: 15px">Coming soon to the App Store</span>
+            <span class="applinks"><a href="float/support.html" style="color: #1d2a44">Support</a><a href="float/privacy.html" style="color: #1d2a44">Privacy</a><a href="float/terms.html" style="color: #1d2a44">Terms</a></span>
+          </div>
+        </div>
+        <div class="phones order-first" aria-hidden="true">
+          <div class="ph ph1 bob2"><img src="assets/float-home-day.jpg" alt="" loading="lazy" /></div>
+          <div class="ph ph2 bob"><video src="assets/float-sky-loop.mp4" poster="assets/float-sky-poster.jpg" autoplay muted loop playsinline preload="metadata"></video></div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="app-card" style="margin-top: 32px;">
-      <img src="Study Cat Icon.png" class="app-icon" alt="Study Cat" />
-      <div class="app-info">
-        <h2>Study Cat</h2>
-        <p class="tagline">
-          Stay focused, earn cats. A beautiful focus timer where every completed
-          session adds a new cat to your growing collection. Coming soon from Silver Leaf Productions.
-        </p>
-        <span class="badge-coming">Coming Soon</span>
+    <!-- SCARE SCAPE -->
+    <section class="scare-bg sec">
+      <div class="wrap two">
+        <div style="display: flex; justify-content: center">
+          <div class="bat" role="img" aria-label="The Scare Scape one-eyed bat"></div>
+        </div>
+        <div class="stack">
+          <span class="pill" style="color: #11150f; background: #dfe86a">For tweens and middle grade readers</span>
+          <h2 style="margin: 0; line-height: 0"><img src="assets/scarescape-title.png" alt="Scare Scape" width="460" height="75" style="width: 460px; max-width: 100%; height: auto; display: block" /></h2>
+          <p style="margin: 0; font-size: 22px; max-width: 500px">You've seen the movie, you've read the books. Now visit Dimvale for real.</p>
+          <p style="margin: 0; font-size: 17px; color: #b9b3a3; max-width: 500px">The Scare Scape app is on its way. Explore the world while you wait.</p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap">
+            <a class="btn" href="https://www.scarescape.com/" style="background: #dfe86a; color: #11150f">Visit scarescape.com</a>
+            <span class="btn" style="border: 1.5px solid rgba(236,230,214,.35); font-size: 15px; padding: 15px 24px">App coming soon</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </section>
+    <!-- STUDY CAT -->
+    <section class="cat-bg sec">
+      <div class="wrap two">
+        <div class="stack">
+          <span class="pill" style="background: #fff">Study timer · Coming soon</span>
+          <h2 class="h2" style="font-family: 'Fredoka', sans-serif; font-weight: 600; color: #8f2a22; letter-spacing: -1px">Study Cat</h2>
+          <p style="margin: 0; font-size: 24px; font-weight: 500; max-width: 480px">Stay Focused, Adopt Cats.</p>
+          <p style="margin: 0; font-size: 17px; color: #4b423b; max-width: 480px">A cosy focus timer where every completed session adds a new cat to your virtual home.</p>
+          <span class="btn" style="background: #8f2a22; color: #fff; font-size: 15px">Coming soon</span>
+        </div>
+        <div class="order-first" style="display: flex; justify-content: center">
+          <img class="tick" src="assets/study-cat-icon.jpg" alt="Study Cat app icon: a cat with glasses in a tomato timer" width="340" height="340" loading="lazy" style="width: 340px; max-width: 80%; height: auto; border-radius: 64px; box-shadow: 0 30px 60px rgba(60,90,80,.3)" />
+        </div>
+      </div>
+    </section>
 
-  <hr class="divider" />
+    <!-- ABOUT + SIGNUP -->
+    <section class="studio sec">
+      <div class="wrap two" style="align-items: start">
+        <div id="about" class="stack" style="gap: 20px">
+          <img src="assets/leaf-silver.png" alt="" aria-hidden="true" style="width: 64px; height: auto" />
+          <h2 class="disp" style="margin: 0; font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -1px">About Silver Leaf</h2>
+          <p style="margin: 0; font-size: 18px; color: #c3cad3">Silver Leaf Productions is an independent studio in Nova Scotia, Canada. We build small, thoughtful apps with big personality, designed to help students focus, build good habits and have fun doing it.</p>
+          <p style="margin: 0; font-size: 18px; color: #c3cad3">Our apps don't sell your data, and we keep them simple, calm and kind.</p>
+        </div>
+        <div id="signup" class="card">
+          <h2 class="disp" style="margin: 0; font-size: 34px; line-height: 1.1; font-weight: 700; letter-spacing: -.5px">Be the first to know when new worlds open.</h2>
+          <p style="margin: 0; color: #aab3be">Launch news for Float, Scare Scape and Study Cat. Send us a quick email and we'll add you to the list. No spam, and you can ask to be removed anytime.</p>
+          <a class="btn" href="mailto:info@silverleafproductions.com?subject=Add%20me%20to%20Silver%20Leaf%20launch%20news" style="background: #d6dee5; color: #0f1117; text-align: center">Email me launch news</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <p class="section-label">Contact</p>
-    <h3>Get in touch</h3>
-    <p>
-      Questions, feedback, or support enquiries:<br />
-      <a href="mailto:info@silverleafproductions.com">info@silverleafproductions.com</a>
-    </p>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <span>© 2026 Silver Leaf Productions</span>
-    <span><a href="float/support.html">Float Support</a> · <a href="float/privacy.html">Float Privacy</a> · <a href="float/terms.html">Float Terms</a></span>
+    <div class="wrap foot">
+      <span>© 2026 Silver Leaf Productions</span>
+      <span><a href="mailto:info@silverleafproductions.com">info@silverleafproductions.com</a><a href="float/support.html">Float Support</a><a href="float/privacy.html">Float Privacy</a><a href="float/terms.html">Float Terms</a></span>
+    </div>
   </footer>
-
 </body>
 </html>
